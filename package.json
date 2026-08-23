@@ -1,0 +1,31 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "Todo List API - boilerplate backend Node.js, Express, dan MongoDB",
+  "homepage": "https://github.com/Rayyara/todo-api#readme",
+  "main": "src/server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon",
+    "test": "jest --runInBand --detectOpenHandles"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "installed": "^3.3.1",
+    "mongodb": "4.1",
+    "mongoose": "^9.9.1",
+    "package": "^1.0.1",
+    "run-func": "^3.0.0",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14"
+  }
+}
