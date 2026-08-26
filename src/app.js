@@ -5,6 +5,7 @@ const cors = require("cors");
 const todoRoutes = require("./routes/todo.routes.js");
 const authRoutes = require("./routes/auth.routes.js");
 const statsRoutes = require("./routes/stats.routes.js");
+const categoryRoutes = require("./routes/category.routes.js");
 const logger = require("./middlewares/logger.middleware.js");
 const notFound = require("./middlewares/notFound.middleware.js");
 const errorHandler = require("./middlewares/errorHandler.middleware.js");
@@ -27,6 +28,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
 app.use("/api/stats", statsRoutes);
+app.use("/api/categories", categoryRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
