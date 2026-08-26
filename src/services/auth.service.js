@@ -24,6 +24,8 @@ async function register({ name, email, password }) {
 }
 
 async function login({ email, password }) {
+    console.log("LOGIN MASUK KE SERVICE:", name);
+
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
