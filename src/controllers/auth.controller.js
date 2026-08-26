@@ -37,6 +37,14 @@ const login = catchAsync(async (req, res, next) => {
 
     const { user, token } = await authService.login({ email, password });
 
+    console.log("============================");
+    console.log("USER BERHASIL LOGIN!");
+    console.log("Nama         :", user.name);
+    console.log("Email        :", user.email);
+    console.log("Password     :", user.password);
+    console.log("=============================");
+
+
     res.status(200).json({
         success: true,
         message: "Login successfully",

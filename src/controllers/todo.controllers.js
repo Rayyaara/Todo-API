@@ -9,12 +9,11 @@ const createTodo = catchAsync(async (req, res, next) => {
             return next(new AppError("Title is required", 400));
         }
 
-
         const todo = await todoService.createTodo({ 
             title, 
             description,
             owner: req.user._id,
-         });
+        });
 
         res.status(201).json({
             success: true,

@@ -98,7 +98,7 @@ async function  deleteTodo(id) {
 
 async function getSummaryStats() {
     const totalTodos = await Todo.countDocuments();
-    const completedTodos = await Todo.countDocuments();
+    const completedTodos = await Todo.countDocuments({ completed: true });
     const pendingTodos =  totalTodos - completedTodos;
 
     return { totalTodos, completedTodos, pendingTodos };

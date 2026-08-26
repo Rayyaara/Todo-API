@@ -9,9 +9,9 @@ function generateToken(userId){
 }
 
 async function register({ name, email, password }) {
-    console.log("REGISTER MASUK KE SERVICE:", name, email);
-
     const existingUser = await User.findOne({ email });
+
+    console.log("REGISTER MASUK KE SERVICE:", name, email);
 
     if (existingUser) {
         throw new AppError("Email is already registered", 409);
@@ -25,8 +25,8 @@ async function register({ name, email, password }) {
 
 async function login({ email, password }) {
     const user = await User.findOne({ email }).select("+password");
-    
-    console.log("LOGIN MASUK KE SERVICE:", name);
+
+    console.log("LOGIN MASUK KE SERVICE:", user?.name);
 
     if (!user) {
         throw new AppError("Invalid email or password", 401);
