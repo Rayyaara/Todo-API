@@ -24,9 +24,9 @@ async function register({ name, email, password }) {
 }
 
 async function login({ email, password }) {
-    console.log("LOGIN MASUK KE SERVICE:", name);
-
     const user = await User.findOne({ email }).select("+password");
+    
+    console.log("LOGIN MASUK KE SERVICE:", name);
 
     if (!user) {
         throw new AppError("Invalid email or password", 401);
