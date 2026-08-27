@@ -10,7 +10,7 @@ async function createCategory(data) {
 }
 
 async function getAllCategories(ownerId) {
-    return await Category.find({ owner: ownerId }).toSorted({ createdAt: -1 });
+    return await Category.find({ owner: ownerId }).sort({ createdAt: -1 });
 }
 
 async function getCategoryById(id) {
@@ -32,10 +32,16 @@ async function deleteCategory(id) {
     return await Category.findByIdAndDelete(id);
 }
 
+async function getCategorySummaryStats() {
+    const totalCategories = await Category.countDocuments();
+    return { totalCategories };
+}
+
 module.exports = {
     createCategory,
     getAllCategories,
     getCategoryById,
     updateCategory,
     deleteCategory,
+    getCategorySummaryStats,
 };

@@ -11,7 +11,7 @@ const createCategory = catchAsync(async (req, res, next) => {
         }
 
         const category = await categoryServices.createCategory({
-            title,
+            name,
             description,
             owner: req.user._id,
         });
@@ -58,7 +58,7 @@ const updateCategory = catchAsync(async (req, res, next) => {
         const { id } = req.params;
         const { name, description } = req.body;
 
-        const existingCategory = await categoryServices.updateCategory(id);
+        const existingCategory = await categoryServices.getCategoryById(id);
 
         if (!existingCategory) {
             return next (new AppError("Category not found", 404));

@@ -1,4 +1,4 @@
-const { body, params } = require("express-validator");
+const { body, param } = require("express-validator");
 
 const createCategoryRules = [
     body("name")
@@ -16,7 +16,7 @@ const createCategoryRules = [
 ];
 
 const updateCategoryRules = [
-    params("id").isMongoId.withMessage("Invalid category ID format"),
+    param("id").isMongoId().withMessage("Invalid category ID format"),
 
     body("name")
       .optional()
@@ -32,7 +32,7 @@ const updateCategoryRules = [
 ];
 
 const getCategoryByIdRules = [
-    params("id").isMongoId.withMessage("Invalid category ID format"),
+    param("id").isMongoId().withMessage("Invalid category ID format"),
 ];
 
 module.exports = {

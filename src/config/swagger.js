@@ -28,23 +28,32 @@ const options = {
                 },
             },
             schemas: {
-              Todo: {
-                type: "object",
-                properties: {
-                  _id: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d5e6" },
-                  title: { type: "string", example: "Belajar Swagger" },
-                  description: { type: "string", example: "Menulis dokumentasi endpoint todo" },
-                  completed: { type: "boolean", example: false },
-                  owner: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d1111" },
-                  createdAt: { type: "string", format: "date-time" },
-                  updatedAt: { type: "string", format: "date-time" },
+                Todo: {
+                    type: "object",
+                    properties: {
+                        _id: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d5e6" },
+                        title: { type: "string", example: "Belajar Swagger" },
+                        description: { type: "string", example: "Menulis dokumentasi endpoint todo" },
+                        completed: { type: "boolean", example: false },
+                        owner: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d1111" },
+                        createdAt: { type: "string", format: "date-time" },
+                        updatedAt: { type: "string", format: "date-time" },
+                    },
                 },
-             },
-
+                Category: {
+                    type: "object",
+                    properties: {
+                        _id: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d999" },
+                        name: { type: "string", example: "Pekerjaan" },
+                        description: { type: "string", example: "Kategori tugas-tugas kantor" },
+                        owner: { type: "string", example: "64a5c7f8d9e8f1a2b3c4d1111" },
+                        createdAt: { type: "string", format: "date-time" },
+                        updatedAt: { type: "string", format: "date-time" },
+                    },
+                },
             },
         },
     },
-
     apis: ["./src/routes/*.js"],
 };
 
