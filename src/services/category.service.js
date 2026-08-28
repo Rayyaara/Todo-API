@@ -1,11 +1,30 @@
-const Category = require("../models/category.js");
+const mongoose = require("mongoose");
+const categoryDb = require("../config/categoryDb");
 
 async function createCategory(data) {
-    const category = new Category ({
-       name: data.name,
-       description: data.description,
-       owner: data.owner,
+    const collectionName = data.name.toLowerCase().trim();
+
+    const DynamicCategoryModel =
+      categoryDb.models[collectionName] || 
+      categoryDb.model(
+        collectionName,
+        new mongoose.Schema(
+            {
+                name: String,
+                description: String,
+                owner: mongoose.Schema.Types.ObjectId,
+            },
+            { timestamp: true }
+        ),
+        collectionName
+      );
+
+    const category = new DynamicCategoryModel({
+        name: data.name,
+        description: data.description,
+        owner: data.owner,
     });
+
     return await category.save();
 }
 
