@@ -14,6 +14,7 @@ const createCategory = catchAsync(async (req, res, next) => {
             name,
             description,
             owner: req.user._id,
+            ipAddress: req.ip,
         });
 
         res.status(201).json({

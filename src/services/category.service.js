@@ -1,3 +1,4 @@
+const { logActivity } = require("./log.service.js");
 const mongoose = require("mongoose");
 const categoryDb = require("../config/categoryDb");
 
@@ -24,6 +25,13 @@ async function createCategory(data) {
         description: data.description,
         owner: data.owner,
     });
+
+    await logActivity(
+        data.owner,
+        "CREATE_CATEGORY",
+        `User membuat kategori baru: ${data.name}`,
+        data.ipAddress
+    );
 
     return await category.save();
 }
