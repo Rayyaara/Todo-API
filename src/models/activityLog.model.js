@@ -19,6 +19,9 @@ const activityLogSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        ipAddress: {
+            type: String,
+        },
     },
     { timestamps: true }
 );

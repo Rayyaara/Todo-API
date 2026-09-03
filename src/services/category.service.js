@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const categoryDb = require("../config/categoryDb");
 
 async function createCategory(data) {
+    console.log("---> DATA DI SERVICE:", data);
+
     const collectionName = data.name.toLowerCase().trim();
 
     const DynamicCategoryModel =
@@ -26,14 +28,19 @@ async function createCategory(data) {
         owner: data.owner,
     });
 
+    const savedCategory = await category.save();
+
+    console.log("---> IP ADDRESS DIPANGGIL:", data.ipAddress);
+
     await logActivity(
         data.owner,
         "CREATE_CATEGORY",
         `User membuat kategori baru: ${data.name}`,
-        data.ipAddress
+        savedCategory._id,
+        data.ipAddress || req.ip || "127.0.0.1"
     );
 
-    return await category.save();
+    return savedCategory;
 }
 
 async function getAllCategories(ownerId) {
