@@ -119,3 +119,7 @@ describe("Todo Endpoints", () => {
         });
     });
 });
+
+afterAll(async () => {
+    await mongoose.connection.close();
+});

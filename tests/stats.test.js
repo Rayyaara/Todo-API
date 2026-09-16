@@ -29,3 +29,7 @@ describe("Stats Endpoint (API Key)", () => {
         expect(res.body.data).toHaveProperty("pendingTodos");
     });
 });
+
+afterAll(async () => {
+    await mongoose.connection.close();
+});
