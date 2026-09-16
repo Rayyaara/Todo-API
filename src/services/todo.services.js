@@ -10,12 +10,16 @@ async function createTodo(data) {
 }
 
 async function getAllTodos(ownerId, queryOptions) {
-    const { page = 1, limit = 10, completed, sortBy = "createdAt", order = "desc" } = queryOptions;
+    const { page = 1, limit = 10, completed, search, sortBy = "createdAt", order = "desc" } = queryOptions;
 
     const filter = { 
         owner: ownerId,
         isDeleted: false
     };
+
+    if (search) {
+       filter.title = { $regex: search, $options: "i" };
+    }
 
     if (completed !== undefined) {
         filter.completed = completed === "true";

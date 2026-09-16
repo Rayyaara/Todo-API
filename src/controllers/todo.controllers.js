@@ -103,7 +103,7 @@ const deleteTodo = catchAsync(async (req, res, next) => {
             return next(new AppError("Todo not found", 404));
         }
 
-        const isOwner = existingTodo.owner.toString() === req.user._id.toString();
+        const isOwner = existingTodo?.owner?.toString() === req.user?._id?.toString();
 
         if (!isOwner && req.user.role !== "admin") {
             return next(new AppError("You do not have permission to delete this todo", 403));
