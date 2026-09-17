@@ -1,5 +1,7 @@
+const mongoose = require("mongoose");
 const request = require("supertest");
 const app = require("../src/app");
+const categoryDb = require("../src/config/categoryDb.js");
 
 describe("Stats Endpoint (API Key)", () => {
     it("Should reject request without API key", async () => {
@@ -32,4 +34,5 @@ describe("Stats Endpoint (API Key)", () => {
 
 afterAll(async () => {
     await mongoose.connection.close();
+    await categoryDb.close();
 });

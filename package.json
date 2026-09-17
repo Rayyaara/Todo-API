@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon",
-    "test": "jest --runInBand --detectOpenHandles"
+    "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

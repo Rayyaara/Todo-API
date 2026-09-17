@@ -1,5 +1,7 @@
+const mongoose = require("mongoose");
 const request = require("supertest");
 const app = require("../src/app");
+const categoryDb = require("../src/config/categoryDb.js");
 
 async function registerAndLogin(email = "ray@example.com") {
     await request(app).post("/api/auth/register").send({
@@ -122,4 +124,5 @@ describe("Todo Endpoints", () => {
 
 afterAll(async () => {
     await mongoose.connection.close();
+    await categoryDb.close();
 });
